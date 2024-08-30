@@ -96,16 +96,6 @@
                 }
             },
         },
-        mounted() {
-            let scriptAd = document.createElement('script');
-            scriptAd.setAttribute(
-                'src',
-                'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5059418763237956'
-            );
-            scriptAd.setAttribute('async', '');
-            scriptAd.setAttribute('crossorigin', 'anonymous');
-            document.head.appendChild(scriptAd);
-        },
         methods: {
             setInput: function (inputType, value) {
                 // eslint-disable-next-line default-case
@@ -233,7 +223,7 @@
                     this.error = 'insecure_location';
                 }
                 const hostname = window.location.hostname;
-                if (hostname && ['localhost', '127.0.0.1', 'vanity-eth.tk'].indexOf(hostname) === -1) {
+                if (hostname && ['localhost', '127.0.0.1', 'vanity-eth.js.cool'].indexOf(hostname) === -1) {
                     this.error = 'insecure_location';
                 }
             },

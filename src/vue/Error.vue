@@ -9,7 +9,7 @@
             <h3>安全警告</h3>
 
             您正在从未知网站使用 Vanity-ETH，这可能会窃取您的私钥。<br />
-            为了安全起见，请在 <a href="https://vanity-eth.js.cool" target="_blank">vanity-eth.tk</a> 上使用
+            为了安全起见，请在 <a href="https://vanity-eth.js.cool" target="_blank">vanity-eth.js.cool</a> 上使用
             Vanity-ETH，或 下载最新版本
             <a href="https://github.com/willin/vanity-eth/archive/refs/heads/offline.zip" target="_blank">这里</a>
             离线使用。
