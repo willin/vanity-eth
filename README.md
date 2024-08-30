@@ -1,90 +1,80 @@
 # Vanity-ETH
 
-[![Build Status](https://flat.badgen.net/github/checks/bokub/vanity-eth?label=build)](https://github.com/bokub/vanity-eth/actions/workflows/deploy.yml?query=branch%3Amaster)
-[![License](https://flat.badgen.net/badge/license/MIT/cyan)](https://raw.githubusercontent.com/bokub/vanity-eth/master/LICENSE)
-[![Code style](https://flat.badgen.net/badge/code%20style/prettier/ff69b4)](https://github.com/bokub/prettier-config)
-[![Maintainability](https://flat.badgen.net/codeclimate/maintainability/bokub/vanity-eth)](https://codeclimate.com/github/bokub/vanity-eth/maintainability)
+[![构建状态](https://flat.badgen.net/github/checks/willin/vanity-eth?label=build)](https://github.com/willin/vanity-eth/actions/workflows/deploy.yml?query=branch%3Amaster)
+[![许可证](https://flat.badgen.net/badge/license/MIT/cyan)](https://raw.githubusercontent.com/bokub/vanity-eth/master/LICENSE)
 
-Browser-based ETH vanity address generator
+基于浏览器的 ETH 靓号地址生成器
 
-Just type [`vanity-eth.tk`](https://vanity-eth.tk) to use it ⚡️
+只需输入 [`vanity-eth.js.cool`](https://vanity-eth.js.cool) 即可使用 ⚡️
 
-[![Vanity-ETH](https://i.imgur.com/zmSLeBP.png)](https://vanity-eth.tk)
+[![Vanity-ETH](https://i.imgur.com/zmSLeBP.png)](https://vanity-eth.js.cool)
 
-## What's a vanity address?
+## 什么是虚荣地址？
 
-A vanity address is an address in which you can choose a part of it to make it appear less random.
+虚荣地址是您可以选择其中一部分使其看起来不那么随机的地址。
 
-Examples:
+示例：
 
 -   `0xc0ffee254729296a45a3885639AC7E10F9d54979`
 -   `0x999999cf1046e68e36E1aA2E0E07105eDDD1f08E`
 
-## Usage
+## 使用方法
 
-First of all, visit [`vanity-eth.tk`](https://vanity-eth.tk)
+首先，访问 [`vanity-eth.js.cool`](https://vanity-eth.js.cool)
 
-Enter a short prefix and/or suffix of your choice and click _Generate_ to start. Your browser will
-generate lots of random addresses until it finds one that matches your input.
+输入您选择的短前缀和/或后缀，然后点击 _生成_ 开始。您的浏览器将生成大量随机地址，直到找到一个与您的输入匹配的地址。
 
-Once an address is found, you can choose to reveal the private key or click the _Save_ button to download a password-encrypted keystore file.
+一旦找到地址，您可以选择显示私钥或点击 _保存_ 按钮下载一个密码加密的密钥库文件。
 
-Adjusting the number of working threads can increase or decrease the speed, depending on your computer's capabilities.
+根据您的计算机能力，调整工作线程的数量可以增加或减少速度。
 
-## Security
+## 安全性
 
-As mentioned earlier, all computations occur solely within your browser. Nothing ever leaves your machine, or even your browser tab.
-There is no database, no server-side code. Everything vanishes when you close your browser tab.
+如前所述，所有计算仅在您的浏览器中进行。没有任何数据会离开您的机器，甚至是您的浏览器标签页。没有数据库，没有服务器端代码。所有内容在您关闭浏览器标签页时消失。
 
-**Vanity-ETH cannot and will never store your private key.** If you have concerns about its trustworthiness, you have three options to ensure the privacy of your key:
+**Vanity-ETH 不能也永远不会存储您的私钥。** 如果您对其可信度有疑虑，您有三种选择来确保您的密钥隐私：
 
--   After loading the web page, you can disconnect from the internet and continue using it seamlessly
--   Alternatively, you can download the latest build of Vanity-ETH [here](https://git.io/veth-dl)
-    and use it on an offline computer
--   The code is 100% open source and available on GitHub, allowing you to review it thoroughly before usage.
+-   加载网页后，您可以断开互联网连接并继续无缝使用它
+-   或者，您可以下载 Vanity-ETH 的最新构建版本 [这里](https://git.io/veth-dl) 并在离线计算机上使用
+-   代码是 100% 开源的，可以在 GitHub 上查看，允许您在使用前彻底审查它。
 
-Vanity-ETH uses a cryptographically secure pseudorandom number generator (CSPRNG) to generate Ethereum addresses.
+Vanity-ETH 使用加密安全的伪随机数生成器 (CSPRNG) 生成以太坊地址。
 
-The keystore file is encrypted with an AES-128-CTR cipher using the PBKDF2-SHA256 derivation function with 65536 hashing rounds.
+密钥库文件使用 AES-128-CTR 密码通过 PBKDF2-SHA256 派生函数进行加密，具有 65536 次哈希轮次。
 
-## Other browser-based tools
+## 性能
 
-Be aware that due to its popularity and open-source nature, Vanity-ETH has been widely copied, leading to the existence of websites claiming to provide the same functionality. Sometimes, they are perfect clones hosted on very similar domains.
+Vanity-ETH 的性能在不同浏览器之间可能会有显著差异。目前，Chrome 提供了最佳结果。
 
-Most of them do not credit the original code, are not open-source, and may contain malicious code.
+虽然您可以在手机或平板电脑上使用 Vanity-ETH，但它不太可能达到传统计算机的速度。
 
-Vanity-ETH has always been the **first** browser-based ETH vanity address generator, and remains the most popular and trusted one.
+**注意：** Vanity-ETH 设计为一个用户友好的工具，直接在您的浏览器中运行，提供无需下载或安装额外软件的便捷性。然而，基于浏览器的工具具有固有的限制，可能会影响其性能和效率。一些专用的命令行工具虽然更难使用，但可能提供更好的性能。
 
-To be sure you're on the real Vanity-ETH website, search for [Vanity-ETH on GitHub](https://github.com/search?o=desc&q=Vanity-ETH&s=stars), find the repository with the most stars (> 600), and click the link in the description. Double check by searching [Vanity-ETH on Google](https://www.google.com/search?q=Vanity-ETH).
+## 兼容性
 
-## Performance
+使用 Vanity-ETH 生成的任何地址都是 ERC-20 兼容的，这意味着您可以将其用于 ICO、空投，或只是从交易所提取资金。
 
-Vanity-ETH's performance may vary significantly across different browsers. Currently, Chrome provides the best results.
+密钥库文件 100% 兼容 MyEtherWallet、MetaMask、Mist 和 geth。
 
-While you can use Vanity-ETH on your phone or tablet, it is unlikely to match the speed of a traditional computer.
+## 从源码构建 Vanity-ETH
 
-**N.B:** Vanity-ETH is designed to be a user-friendly tool that runs directly in your browser, providing easy accessibility without the need to download or install additional software.
-However, browser-based tools have inherent limitations that may affect their performance and efficiency. Some dedicated command-line tools are more difficult to use, but may offer better performance.
+使用 Vanity-ETH 生成的任何地址都是 ERC-20 兼容的，这意味着您可以将其用于 ICO、空投，或只是从交易所提取资金。
 
-## Compatibility
+密钥库文件 100% 兼容 MyEtherWallet、MetaMask、Mist 和 geth。
 
-Any address generated with Vanity-ETH is ERC-20 compatible, which means you can use it for an ICO, an airdrop, or just
-to withdraw your funds from an exchange.
+## 从源码构建 Vanity-ETH
 
-The keystore file is 100% compatible with MyEtherWallet, MetaMask, Mist, and geth.
-
-## Build Vanity-ETH from source
-
-A GitHub Action is in charge of building and deploying Vanity-ETH to GitHub pages automatically 🤖, but you can make
-your own build from source if you want (you will need Node.js 16)
+一个 GitHub Action 负责自动构建和部署 Vanity-ETH 到 GitHub Pages 🤖，但如果您愿意，您可以从源码构建自己的版本（您需要 Node.js 16）
 
 ```sh
-git clone https://github.com/bokub/vanity-eth
+git clone https://github.com/willin/vanity-eth
 cd vanity-eth
 npm i
 npm run build
 ```
 
-## Tips
+## License
 
-You can support this project by sending tips to `0xAceBabe64807cb045505b268ef253D8fC2FeF5Bc` 💛
+MIT
+
+Author: [Boris K](https://github.com/bokub)
