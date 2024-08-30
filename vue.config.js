@@ -19,7 +19,7 @@ module.exports = {
     configureWebpack: {
         plugins: process.env.DEPLOY
             ? [
-                  new (require('prerender-spa-plugin'))({
+                  new (require('@zenghj/prerender-spa-plugin'))({
                       staticDir: path.join(__dirname, 'dist'),
                       routes: ['/'],
                       postProcess(renderedRoute) {
