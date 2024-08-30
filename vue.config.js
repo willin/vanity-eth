@@ -16,21 +16,21 @@ module.exports = {
             })
             .end();
     },
-    configureWebpack: {
-        plugins: process.env.DEPLOY
-            ? [
-                  new (require('@zenghj/prerender-spa-plugin'))({
-                      staticDir: path.join(__dirname, 'dist'),
-                      routes: ['/'],
-                      postProcess(renderedRoute) {
-                          renderedRoute.html = prettier
-                              .format(renderedRoute.html, { filepath: 'index.html', printWidth: 120 })
-                              .replace('render', 'prerender')
-                              .replace(/(data-v-[0-9a-f]+)=""/gm, '$1');
-                          return renderedRoute;
-                      },
-                  }),
-              ]
-            : [],
-    },
+    // configureWebpack: {
+    //     plugins: process.env.DEPLOY
+    //         ? [
+    //               new (require('@zenghj/prerender-spa-plugin'))({
+    //                   staticDir: path.join(__dirname, 'dist'),
+    //                   routes: ['/'],
+    //                   postProcess(renderedRoute) {
+    //                       renderedRoute.html = prettier
+    //                           .format(renderedRoute.html, { filepath: 'index.html', printWidth: 120 })
+    //                           .replace('render', 'prerender')
+    //                           .replace(/(data-v-[0-9a-f]+)=""/gm, '$1');
+    //                       return renderedRoute;
+    //                   },
+    //               }),
+    //           ]
+    //         : [],
+    // },
 };

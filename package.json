@@ -9,7 +9,7 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "build:deploy": "npm i --no-save @zenghj/prerender-spa-plugin && cross-env DEPLOY=true npm run build",
+        "build:deploy": "cross-env DEPLOY=true npm run build",
         "test": "vue-cli-service lint --nofix",
         "prepare": "husky install"
     },
