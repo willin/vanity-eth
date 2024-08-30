@@ -2,7 +2,7 @@
     <!--Github corner-->
     <div>
         <h1>VANITY-ETH</h1>
-        <p>ETH vanity address generator</p>
+        <p>ETH 地址靓号生成器</p>
     </div>
 </template>
 

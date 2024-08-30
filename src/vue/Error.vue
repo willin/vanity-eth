@@ -1,16 +1,18 @@
 <template>
     <div class="panel">
         <p v-if="error === 'workers_unsupported'">
-            Your browser does not support multi-thread computation.<br>
-            Please use a different browser.
+            您的浏览器不支持多线程计算。<br />
+            请使用其他浏览器。
         </p>
 
         <div v-if="error === 'insecure_location'">
-            <h3>Security alert</h3>
+            <h3>安全警告</h3>
 
-            You are using Vanity-ETH from an unknown website, which could steal your private keys.<br>
-            To stay safe, use Vanity-ETH on <a href="https://vanity-eth.tk" target="_blank">vanity-eth.tk</a>, or
-            download the latest build <a href="https://git.io/veth-dl" target="_blank">here</a> to use offline.
+            您正在从未知网站使用 Vanity-ETH，这可能会窃取您的私钥。<br />
+            为了安全起见，请在 <a href="https://vanity-eth.js.cool" target="_blank">vanity-eth.tk</a> 上使用
+            Vanity-ETH，或 下载最新版本
+            <a href="https://github.com/willin/vanity-eth/archive/refs/heads/offline.zip" target="_blank">这里</a>
+            离线使用。
         </div>
         <p v-else v-html="error.replace('\n', '<br>')"></p>
     </div>
@@ -21,9 +23,9 @@
         props: {
             error: {
                 type: String,
-                required: true
-            }
-        }
+                required: true,
+            },
+        },
     };
 </script>
 

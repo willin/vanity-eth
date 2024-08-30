@@ -1,23 +1,21 @@
 <template>
     <div class="panel">
-        <div>Difficulty: <span class="output" v-text="formatNum(difficulty)">1</span></div>
+        <div>复杂度: <span class="output" v-text="formatNum(difficulty)">1</span></div>
         <div>
-            Generated:
-            <span class="output" v-text="formatNum(count) + (count === 1 ? ' address' : ' addresses')"
-                >0 addresses</span
-            >
+            已生成:
+            <span class="output" v-text="formatNum(count) + (count === 1 ? ' 个地址' : ' 个地址')">0 个地址</span>
         </div>
-        <div>50% probability: <span class="output" v-text="speed ? time50 : adresses50">0 addresses</span></div>
-        <div>Speed: <span class="output" v-text="speed + ' addr/s'">0 addr/s</span></div>
-        <div>Status: <span class="output" v-text="status">Waiting</span></div>
+        <div>50% 概率: <span class="output" v-text="speed ? time50 : addresses50">0 个地址</span></div>
+        <div>速度: <span class="output" v-text="speed + ' 个地址/秒'">0 个地址/秒</span></div>
+        <div>状态: <span class="output" v-text="status">等待中</span></div>
 
-        <!--Probability-->
+        <!-- 概率 -->
         <div class="probability">
             <div class="probability-bar" :style="'width:' + probability + '%'"></div>
         </div>
         <div class="percentage">
             <h4 v-text="probability + '%'">0%</h4>
-            <div>Probability</div>
+            <div>概率</div>
         </div>
     </div>
 </template>
@@ -25,27 +23,21 @@
 <script>
     import humanizeDuration from 'humanize-duration';
 
-    const computeDifficulty = function (prefix, suffix, isChecksum) {
+    const computeDifficulty = (prefix, suffix, isChecksum) => {
         const pattern = prefix + suffix;
         const ret = Math.pow(16, pattern.length);
         return isChecksum ? ret * Math.pow(2, pattern.replace(/[^a-f]/gi, '').length) : ret;
     };
 
-    const computeProbability = function (difficulty, attempts) {
-        return 1 - Math.pow(1 - 1 / difficulty, attempts);
-    };
+    const computeProbability = (difficulty, attempts) => 1 - Math.pow(1 - 1 / difficulty, attempts);
 
-    const isValidHex = function (hex) {
-        return hex.length ? /^[0-9A-F]+$/g.test(hex.toUpperCase()) : true;
-    };
+    const isValidHex = (hex) => (hex.length ? /^[0-9A-F]+$/g.test(hex.toUpperCase()) : true);
 
     export default {
-        data: function () {
-            return {
-                speed: 0,
-                count: 0,
-            };
-        },
+        data: () => ({
+            speed: 0,
+            count: 0,
+        }),
         props: {
             prefix: String,
             suffix: String,
@@ -74,27 +66,30 @@
             probability50() {
                 return this.inputError ? 0 : Math.floor(Math.log(0.5) / Math.log(1 - 1 / this.difficulty));
             },
-            adresses50: function () {
-                if (this.probability50 === -Infinity) {
-                    return 'Nearly impossible';
+            addresses50: function () {
+                if (this.probability50 === Number.NEGATIVE_INFINITY) {
+                    return '几乎不可能';
                 }
-                return this.inputError ? 'N/A' : this.formatNum(this.probability50) + ' addresses';
+                return this.inputError ? 'N/A' : this.formatNum(this.probability50) + ' 个地址';
             },
             time50: function () {
                 const seconds = this.probability50 / this.speed;
-                if (seconds > 200 * 365.25 * 24 * 3600 || seconds === -Infinity) {
-                    return 'Thousands of years';
+                if (seconds > 200 * 365.25 * 24 * 3600 || seconds === Number.NEGATIVE_INFINITY) {
+                    return '数千年';
                 }
-                return this.inputError ? 'N/A' : humanizeDuration(Math.round(seconds) * 1000, { largest: 2 });
+                return this.inputError
+                    ? 'N/A'
+                    : humanizeDuration(Math.round(seconds) * 1000, {
+                          largest: 2,
+                          language: 'zh_CN',
+                      });
             },
             probability: function () {
                 return Math.round(10000 * computeProbability(this.difficulty, this.count)) / 100;
             },
         },
         methods: {
-            formatNum: function (num) {
-                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-            },
+            formatNum: (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
         },
         created: function () {
             this.$parent.$on('increment-counter', (incr) => {

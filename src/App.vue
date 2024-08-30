@@ -96,6 +96,16 @@
                 }
             },
         },
+        mounted() {
+            let scriptAd = document.createElement('script');
+            scriptAd.setAttribute(
+                'src',
+                'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5059418763237956'
+            );
+            scriptAd.setAttribute('async', '');
+            scriptAd.setAttribute('crossorigin', 'anonymous');
+            document.head.appendChild(scriptAd);
+        },
         methods: {
             setInput: function (inputType, value) {
                 // eslint-disable-next-line default-case

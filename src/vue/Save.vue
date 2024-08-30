@@ -1,7 +1,7 @@
 <template>
     <div class="remodal" data-remodal-id="modal" data-remodal-options="hashTracking: false">
         <button data-remodal-action="close" class="remodal-close"></button>
-        <h3 class="title">Create encrypted keystore file (UTC / JSON)</h3>
+        <h3 class="title">创建加密的密钥库文件 (UTC / JSON)</h3>
         <form @submit.prevent="save">
             <div>
                 <input class="hidden" type="text" autocomplete="username" />
@@ -10,7 +10,7 @@
                     autocomplete="new-password"
                     class="text-input-large"
                     v-model="password"
-                    placeholder="Password"
+                    placeholder="密码"
                 />
                 <button type="button" class="show-password" @click="showPassword = !showPassword">
                     <i :class="showPassword ? 'icon-eye-off' : 'icon-eye-on'"></i>
@@ -22,7 +22,7 @@
                     class="button-large"
                     @click="save"
                     :disabled="!password || !privateKey || loading"
-                    v-text="loading ? 'Generating...' : 'Download'"
+                    v-text="loading ? '生成中...' : '下载'"
                 ></button>
             </div>
         </form>
@@ -34,21 +34,19 @@
     import 'randombytes';
     import * as download from 'downloadjs';
 
-    import { v4 } from 'uuid';
     import CryptoJS from 'crypto-js';
+    import { v4 } from 'uuid';
 
     export default {
         props: {
             privateKey: String,
             address: String,
         },
-        data: function () {
-            return {
-                showPassword: false,
-                password: '',
-                loading: false,
-            };
-        },
+        data: () => ({
+            showPassword: false,
+            password: '',
+            loading: false,
+        }),
         watch: {
             privateKey: function () {
                 this.password = ''; // Reset password when new address is generated
@@ -109,7 +107,12 @@
 
                 return {
                     kdf: 'pbkdf2',
-                    kdfparams: { c: 262144, dklen: 32, prf: 'hmac-sha256', salt: salt.toString() },
+                    kdfparams: {
+                        c: 262144,
+                        dklen: 32,
+                        prf: 'hmac-sha256',
+                        salt: salt.toString(),
+                    },
                     cipher: 'aes-128-ctr',
                     ciphertext: cipher.ciphertext.toString(),
                     cipherparams: { iv: iv.toString() },

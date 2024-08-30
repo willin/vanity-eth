@@ -1,99 +1,77 @@
 <template>
     <div class="panel">
         <p>
-            Vanity-ETH is an open-source tool that uses your web browser to generate Ethereum vanity addresses.<br />
-            Enter a short prefix and/or suffix of your choice and click <i>Generate</i> to start.
+            Vanity-ETH 是一个开源工具，它使用您的网络浏览器生成以太坊靓号地址。<br />
+            输入您选择的短前缀和/或后缀，然后点击<i>生成</i>开始。
         </p>
         <div class="shortcut">
-            <button type="button" class="button-large" @click="scrollDown">Start now</button>
+            <button type="button" class="button-large" @click="scrollDown">立即开始</button>
         </div>
 
-        <h2>What's a vanity address?</h2>
+        <h2>什么是靓号地址？</h2>
         <div class="p">
-            A vanity address is an address in which you can choose a part of it to make it appear less random.<br />
-            Examples:
+            靓号地址是您可以选择其中一部分使其看起来不那么随机的地址。<br />
+            示例：
             <ul>
-                <li><span class="monospace">0xc0ffee254729296a45a3885639AC7E10F9d54979</span></li>
                 <li><span class="monospace">0x999999cf1046e68e36E1aA2E0E07105eDDD1f08E</span></li>
+                <li>
+                    <span class="monospace">0x0009892FE190bf00A3387AD2DE4A179cdEF70000</span> (`000`前缀`0000`后缀：M1
+                    Max，5 线程，约 3 小时生成)
+                </li>
             </ul>
         </div>
 
-        <h2>How it works</h2>
+        <h2>它是如何工作的</h2>
         <p>
-            Enter a short prefix and/or suffix of your choice and click <i>Generate</i> to start. Your browser will
-            generate lots of random addresses until it finds one that matches your input.<br />
-            Once an address is found, you can choose to reveal the private key or click the <i>Save</i> button to
-            download a password-encrypted keystore file.<br /><br />
-            Adjusting the number of working threads can increase or decrease the speed, depending on your computer's
-            capabilities.<br />
+            输入您选择的短前缀和/或后缀，然后点击<i>生成</i>开始。您的浏览器将生成大量随机地址，直到找到一个与您的输入匹配的地址。<br />
+            一旦找到地址，您可以选择显示私钥或点击<i>保存</i>按钮下载一个密码加密的密钥库文件。<br /><br />
+            根据您的计算机能力，调整工作线程的数量可以增加或减少速度。<br />
         </p>
-        <h2>Security</h2>
+        <h2>安全性</h2>
         <p>
-            As mentioned earlier, all computations occur solely within your browser. Nothing ever leaves your machine,
-            or even your browser tab. There is no database, no server-side code. Everything vanishes when you close your
-            browser tab.<br /><br />
-            <b>Vanity-ETH cannot and will never store your private key.</b> If you have concerns about its
-            trustworthiness, you have three options to ensure the privacy of your key:<br />
-            &nbsp;-&nbsp;After loading the web page, you can disconnect from the internet and continue using it
-            seamlessly<br />
-            &nbsp;-&nbsp;Alternatively, you can download the latest build of Vanity-ETH
-            <a href="https://git.io/veth-dl" target="_blank">here</a> and use it on an offline computer<br />
-            &nbsp;-&nbsp;The code is 100% open source and available on
-            <a href="https://github.com/bokub/vanity-eth" target="_blank">GitHub</a>, allowing you to review it
-            thoroughly before usage<br />
+            如前所述，所有计算仅在您的浏览器中进行。没有任何数据会离开您的机器，甚至是您的浏览器标签页。没有数据库，没有服务器端代码。所有内容在您关闭浏览器标签页时消失。<br /><br />
+            <b>Vanity-ETH 不能也永远不会存储您的私钥。</b>
+            如果您对其可信度有疑虑，您有三种选择来确保您的密钥隐私：<br />
+            &nbsp;-&nbsp;加载网页后，您可以断开互联网连接并继续无缝使用它<br />
+            &nbsp;-&nbsp;或者，您可以下载 Vanity-ETH 的最新构建版本
+            <a href="https://github.com/willin/vanity-eth/archive/refs/heads/offline.zip" target="_blank">这里</a
+            >并在离线计算机上使用<br />
+            &nbsp;-&nbsp;代码是 100% 开源的，可以在
+            <a href="https://github.com/willin/vanity-eth" target="_blank">GitHub</a
+            >上查看，允许您在使用前彻底审查它<br />
             <br />
-            Vanity-ETH uses a cryptographically secure pseudorandom number generator (CSPRNG) to generate Ethereum
-            addresses.<br />
-            The keystore file is encrypted with an AES-128-CTR cipher using the PBKDF2-SHA256 derivation function with
-            65536 hashing rounds.
+            Vanity-ETH 使用加密安全的伪随机数生成器 (CSPRNG) 生成以太坊地址。<br />
+            密钥库文件使用 AES-128-CTR 密码通过 PBKDF2-SHA256 派生函数进行加密，具有 65536 次哈希轮次。
         </p>
-        <h2>Other browser-based tools</h2>
+        <h2>性能</h2>
         <p>
-            Be aware that due to its popularity and open-source nature, Vanity-ETH has been widely copied, leading to
-            the existence of websites claiming to provide the same functionality. Sometimes, they are perfect clones
-            hosted on very similar domains.<br />
-            Most of them do not credit the original code, are not open-source, and may contain malicious code.<br /><br />
-            Vanity-ETH has always been the <b>first</b> browser-based ETH vanity address generator, and remains the most
-            popular and trusted one.<br /><br />
-            To be sure you're on the real Vanity-ETH website, search for
-            <a href="https://github.com/search?o=desc&q=Vanity-ETH&s=stars" target="_blank">Vanity-ETH on GitHub</a>,
-            find the repository with the most stars (> 600), and click the link in the description. Double check by
-            searching <a href="https://www.google.com/search?q=Vanity-ETH" target="_blank">Vanity-ETH on Google</a>.
+            Vanity-ETH 的性能在不同浏览器之间可能会有显著差异。目前，Chrome 提供了最佳结果。<br />
+            虽然您可以在手机或平板电脑上使用 Vanity-ETH，但它不太可能达到传统计算机的速度。<br /><br />
+            <b>注意：</b> Vanity-ETH
+            设计为一个用户友好的工具，直接在您的浏览器中运行，提供无需下载或安装额外软件的便捷性。<br />
+            然而，基于浏览器的工具具有固有的限制，可能会影响其性能和效率。一些专用的命令行工具虽然更难使用，但可能提供更好的性能。
         </p>
-        <h2>Performance</h2>
+        <h2>兼容性</h2>
         <p>
-            Vanity-ETH's performance may vary significantly across different browsers. Currently, Chrome provides the
-            best results.<br />
-            While you can use Vanity-ETH on your phone or tablet, it is unlikely to match the speed of a traditional
-            computer.<br /><br />
-            <b>N.B:</b> Vanity-ETH is designed to be a user-friendly tool that runs directly in your browser, providing
-            easy accessibility without the need to download or install additional software.<br />
-            However, browser-based tools have inherent limitations that may affect their performance and efficiency.
-            Some dedicated command-line tools are more difficult to use, but may offer better performance.
-        </p>
-        <h2>Compatibility</h2>
-        <p>
-            Any address generated with Vanity-ETH is ERC-20 compatible, which means you can use it for an ICO, an
-            airdrop, or just to withdraw your funds from an exchange.<br />
-            The keystore file is 100% compatible with MyEtherWallet, MetaMask, Mist, and geth.
+            使用 Vanity-ETH 生成的任何地址都是 ERC-20 兼容的，这意味着您可以将其用于
+            ICO、空投，或只是从交易所提取资金。<br />
+            密钥库文件 100% 兼容 MyEtherWallet、MetaMask、Mist 和 geth。
         </p>
     </div>
 </template>
 
 <script>
     export default {
-        data: function () {
-            return {
-                scrollTimeOut: null,
-            };
-        },
+        data: () => ({
+            scrollTimeOut: null,
+        }),
         methods: {
             scrollDown() {
                 this.scrollTo(document.getElementById('input-panel'), -1);
             },
             scrollTo(element, lastValue) {
-                let currentValue = window.scrollY;
-                let diff = element.getBoundingClientRect().top / 6;
+                const currentValue = window.scrollY;
+                const diff = element.getBoundingClientRect().top / 6;
                 if (Math.abs(diff) > 1 && currentValue > lastValue) {
                     window.scrollTo(0, window.scrollY + diff);
                     this.scrollTimeOut = setTimeout(this.scrollTo, 30, element, currentValue);

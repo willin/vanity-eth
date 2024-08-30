@@ -1,7 +1,7 @@
 <template>
     <div class="panel" id="input-panel">
         <form @submit.prevent="startGen">
-            <div class="error-text" v-if="inputError">Numbers and letters from A to F only</div>
+            <div class="error-text" v-if="inputError">仅限数字和 A 到 F 的字母</div>
 
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-12 col-lg-6">
@@ -10,7 +10,7 @@
                         type="text"
                         class="text-input-large"
                         id="input"
-                        placeholder="Prefix"
+                        placeholder="前缀"
                         v-model="prefix"
                         :disabled="running"
                     />
@@ -21,7 +21,7 @@
                         type="text"
                         class="text-input-large"
                         id="input"
-                        placeholder="Suffix"
+                        placeholder="后缀"
                         v-model="suffix"
                         :disabled="running"
                     />
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="example hide-prerender">
-                E.g.&nbsp;
+                例如&nbsp;
                 <span v-if="inputError" class="monospace">N/A</span>
                 <span v-else class="monospace">
                     0x<!--
@@ -51,7 +51,7 @@
                 <label class="checkbox">
                     <input type="checkbox" name="checkbox" checked="" v-model="checksum" :disabled="running" />
                     <i class="left"> </i>
-                    Case-sensitive
+                    区分大小写
                 </label>
             </div>
             <div class="threads hide-prerender">
@@ -70,22 +70,22 @@
                     :disabled="running"
                 />
                 <h4 v-text="threads"></h4>
-                <span>&nbsp;threads</span>
-                <span v-if="threads === cores"> (recommended)</span>
+                <span>&nbsp;线程</span>
+                <span v-if="threads === cores"> (推荐)</span>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
-                    <input type="button" value="Generate" class="button-large hide-render" disabled />
+                    <input type="button" value="生成" class="button-large hide-render" disabled />
                     <input
                         type="button"
-                        value="Generate"
+                        value="生成"
                         class="button-large hide-prerender"
                         @click="startGen"
                         :disabled="running || inputError || error"
                     />
                 </div>
                 <div class="col-lg-6 col-sm-12">
-                    <input type="button" value="Stop" class="button-large" @click="stopGen" :disabled="!running" />
+                    <input type="button" value="停止" class="button-large" @click="stopGen" :disabled="!running" />
                 </div>
             </div>
         </form>
@@ -93,9 +93,7 @@
 </template>
 
 <script>
-    const isValidHex = function (hex) {
-        return hex.length ? /^[0-9A-F]+$/g.test(hex.toUpperCase()) : true;
-    };
+    const isValidHex = (hex) => (hex.length ? /^[0-9A-F]+$/g.test(hex.toUpperCase()) : true);
 
     function mixCase(str) {
         let ret = '';
