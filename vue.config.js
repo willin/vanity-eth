@@ -1,5 +1,5 @@
-const path = require('path');
-const prettier = require('prettier');
+// const path = require('path');
+// const prettier = require('prettier');
 
 module.exports = {
     publicPath: '',
