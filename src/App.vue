@@ -64,31 +64,29 @@
 <script>
     import Worker from './js/vanity.js';
 
-    import Headline from './vue/Headline';
+    import Corner from './vue/Corner';
     import Description from './vue/Description';
     import Err from './vue/Error';
+    import Foot from './vue/Footer';
+    import Headline from './vue/Headline';
     import UserInput from './vue/Input';
-    import Statistics from './vue/Statistics';
     import Result from './vue/Result';
     import Save from './vue/Save.vue';
-    import Corner from './vue/Corner';
-    import Foot from './vue/Footer';
+    import Statistics from './vue/Statistics';
 
     export default {
         components: { Headline, Description, Err, UserInput, Statistics, Result, Save, Corner, Foot },
-        data: function () {
-            return {
-                running: false,
-                status: 'Waiting',
-                workers: [],
-                threads: 4,
-                cores: 0,
-                result: { address: '', privateKey: '' },
-                input: { prefix: '', suffix: '', checksum: true },
-                firstTick: null,
-                error: null,
-            };
-        },
+        data: () => ({
+            running: false,
+            status: '未开始',
+            workers: [],
+            threads: 4,
+            cores: 0,
+            result: { address: '', privateKey: '' },
+            input: { prefix: '', suffix: '', checksum: true },
+            firstTick: null,
+            error: null,
+        }),
         watch: {
             threads: function () {
                 if (!this.running) {
@@ -118,7 +116,7 @@
                 this.$emit('increment-counter', result.attempts);
                 this.result.address = result.address;
                 this.result.privateKey = result.privKey;
-                this.status = 'Address found';
+                this.status = '发现地址';
             },
 
             clearResult: function () {
@@ -131,7 +129,6 @@
              * Create missing workers, remove the unwanted ones.
              */
             initWorkers: function () {
-                const self = this;
                 if (this.workers.length === this.threads) {
                     return;
                 }
@@ -149,10 +146,10 @@
                 for (let w = this.workers.length; w < this.threads; w++) {
                     try {
                         this.workers[w] = new Worker();
-                        this.workers[w].onmessage = (event) => self.parseWorkerMessage(event.data);
+                        this.workers[w].onmessage = (event) => this.parseWorkerMessage(event.data);
                     } catch (err) {
                         this.error = err;
-                        this.status = 'Error';
+                        this.status = '出错了';
                         console.error(this.error);
                         break;
                     }
@@ -163,7 +160,7 @@
                 if (wallet.error) {
                     this.stopGen();
                     this.error = wallet.error;
-                    this.status = 'Error';
+                    this.status = '出错了';
                     console.error(this.error);
                     return;
                 }
@@ -188,13 +185,13 @@
                     this.workers[w].postMessage(this.input);
                 }
 
-                this.status = 'Running';
+                this.status = '运行中';
                 this.firstTick = performance.now();
             },
 
             stopGen: function () {
                 this.running = false;
-                this.status = 'Stopped';
+                this.status = '已停止';
                 for (let i = 0; i < this.workers.length; i++) {
                     this.workers[i].terminate();
                 }
@@ -206,7 +203,7 @@
                 // Estimate number of cores on machine
                 let cores = 0;
                 try {
-                    cores = parseInt(navigator.hardwareConcurrency, 10);
+                    cores = Number.parseInt(navigator.hardwareConcurrency, 10);
                 } catch (err) {
                     console.error(err);
                 }

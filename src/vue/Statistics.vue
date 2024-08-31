@@ -7,7 +7,7 @@
         </div>
         <div>50% 概率: <span class="output" v-text="speed ? time50 : addresses50">0 个地址</span></div>
         <div>速度: <span class="output" v-text="speed + ' 个地址/秒'">0 个地址/秒</span></div>
-        <div>状态: <span class="output" v-text="status">等待中</span></div>
+        <div>状态: <span class="output" v-text="status">未开始</span></div>
 
         <!-- 概率 -->
         <div class="probability">

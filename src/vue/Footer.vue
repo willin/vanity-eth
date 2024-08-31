@@ -29,7 +29,7 @@
 <script>
     export default {
         data: () => ({
-            tipsAddress: '0x0009892FE190bf00A3387AD2DE4A179cdEF70000',
+            tipsAddress: '0x00005De0Bf4A68318Af6E3F93b1ce36576450000',
         }),
     };
 </script>

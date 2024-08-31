@@ -13,7 +13,10 @@
             靓号地址是您可以选择其中一部分使其看起来不那么随机的地址。<br />
             示例：
             <ul>
-                <li><span class="monospace">0x999999cf1046e68e36E1aA2E0E07105eDDD1f08E</span></li>
+                <li>
+                    <span class="monospace">0x00005De0Bf4A68318Af6E3F93b1ce36576450000</span> (`000`前缀`0000`后缀：M1
+                    Max，10 线程，加ultra 7，22 线程，约一周生成)
+                </li>
                 <li>
                     <span class="monospace">0x0009892FE190bf00A3387AD2DE4A179cdEF70000</span> (`000`前缀`0000`后缀：M1
                     Max，5 线程，约 3 小时生成)
