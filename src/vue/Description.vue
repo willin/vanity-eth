@@ -14,8 +14,8 @@
             示例：
             <ul>
                 <li>
-                    <span class="monospace">0x00005De0Bf4A68318Af6E3F93b1ce36576450000</span> (`000`前缀`0000`后缀：M1
-                    Max，10 线程，加ultra 7，22 线程，约一周生成)
+                    <span class="monospace">0x00005De0Bf4A68318Af6E3F93b1ce36576450000</span> (`0000`前缀`0000`后缀：M1
+                    Max，10 线程，加 Ultra 7，22 线程，约一周生成)
                 </li>
                 <li>
                     <span class="monospace">0x0009892FE190bf00A3387AD2DE4A179cdEF70000</span> (`000`前缀`0000`后缀：M1
